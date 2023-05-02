@@ -16,13 +16,17 @@ def calc_covar(corr, szoras_a, szoras_b):
 #step2 hozamok generálása
 
 
-def sim_portfolio(mean, cov_matrix, size):
+def calc_asset_returns(mean, cov_matrix, size):
     sim_returns = np.random.multivariate_normal(mean, cov_matrix, size)
     return sim_returns
 
 
 #print(np.mean(sim_portfolio([0.3, 0.7], [[0.1, 0.05], [0.05, 0.1]], 1000), axis=0))
 #print(np.cov(sim_portfolio([0.3, 0.7], [[0.1, 0.05], [0.05, 0.1]], 1000).T))
+
+
+def convert_continuous(returns):
+    return np.log(returns) - 1
 
 
 def calc_portfolio_return(weight_1, weight_2, return_1, return_2):
